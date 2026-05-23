@@ -101,6 +101,20 @@ public class Main {
                 System.out.printf("   - %s\n", r.tipus);
             }
         }
+
+        // --- 5. feladat ---
+        PrintWriter ki = null;
+        try {
+            ki = new PrintWriter(new File("sokutas.txt"), "utf-8");
+            for (Repulo repulo : repulok) {
+                if (repulo.ferohely > 300) ki.printf("%s / %d hely\r\n", repulo.tipus, repulo.ferohely);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ki != null) ki.close();
+        }
+        System.out.printf("5) A 300 főnél több férőhelyű gépek adatai a sokutas.txt fájlba mentve.\n");
     }
 
     private void betolt(String fajlnev) {
@@ -133,4 +147,48 @@ Airbus A380;72.7;560000;555;320000
 Boeing 737;39.5;79015;189;26000
 Airbus A320;37.6;78000;180;23500
 ...
+```
+## Feladat
+```
+ A repulok.csv fájl repülőgépek adatait tartalmazza, pontosvesszővel elválasztva,
+ utf-8 kódolással. VIGYÁZAT, az első sor fejléc!
+ Hozzunk létre egy Repulok nevű projektet és oldjuk meg a következő feladatokat!
+
+ 0) Olvassuk be a fájl adatait egy megfelelő adatszerkezetbe,
+    és jelenítsük meg a beolvasott adatok számát!.....................(2p)
+    Írjuk ki egy véletlenszerűen kiválasztott repülő típusát!.........(1p)
+ 1) Keressük meg és írjuk ki melyik a legtöbb férőhelyes repülő!......(1p)
+    Írjuk ki melyik a második a férőhelyek alapján!...................(1p)
+ 2) Számoljuk ki a 100000kg-nál kisebb gépek átlagsúlyát (2 tized)!...(1p)
+ 3) Írjuk ki azokat a típusokat, melyekben nincs számjegy!............(2p)
+ 4) A típus első szava a gyártó. Írjuk ki a gyártók neveit!...........(2p)
+    A nevek vesszővel legyenek elválasztva (de az utolsó után NE)!....(1p)
+    Véletlenszerűen válasszunk ki egy gyártót,........................(1p)
+    és írjuk ki az általuk készített repülők típusait!................(1p)
+ 5) Írjuk ki a sokutas.txt fájlba azokat a géptípusokat
+    és férőhelyüket, ahol 300 főnél többen utazhatnak egyszerre!......(2p)
+
+ Minta:
+ 0) Összesen 19 repülő adata beolvasva.
+    Közülük egy véletlen kiválasztott: Lockheed Martin C-130 Hercules
+ 1) Legtöbb férőhellyel rendelkezik: Airbus A380 (555 hely)
+    A második legtöbb férőhely: Boeing 747 (416 hely)
+ 2) A 100000kg súlynál kisebb gépek (9 darab) átlagsúlya: 49546,11kg
+ 3) Típusok, amelyikben nincs szám: Concorde
+ 4) Gyártók: Airbus, Antonov, Boeing, Bombardier, Concorde, Embraer, Lockheed, McDonnell, Sukhoi
+    Közülük egy véletlen kiválasztott: Boeing
+    Termékeik:
+    - Boeing 747
+    - Boeing 737
+    - Boeing 787
+    - Boeing 777
+    - Boeing 757
+    - Boeing 767
+ 5) A 300 főnél több férőhelyű gépek adatai a sokutas.txt fájlba mentve.
+
+ sokutas.txt:
+ Boeing 747 / 416 hely
+ Airbus A380 / 555 hely
+ Boeing 777 / 368 hely
+ Airbus A350 / 315 hely
 ```
